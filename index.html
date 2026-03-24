@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+
+    <h1>Student Registration</h1>
+    <p>Welcome! Add a student below:</p>
+
+   
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.stud_name.label }}<br>
+            {{ form.stud_name(size=30) }}
+            {% for error in form.stud_name.errors %}
+                <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.stud_age.label }}<br>
+            {{ form.stud_age() }}
+            {% for error in form.stud_age.errors %}
+                <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <hr>
+
+    <h2>Registered Students</h2>
+
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in details %}
+            <tr>
+                <td>{{ student.sid }}</td>
+                <td>{{ student.sname }}</td>
+                <td>{{ student.sage }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
